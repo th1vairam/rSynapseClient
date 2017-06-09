@@ -39,7 +39,7 @@ synapseLogin <- function(username = "", password = "", sessionToken = "", apiKey
 	}
 }
 
-.doAuth <- function(credentials) {
+.doAuth <- function(credentials, silent = FALSE) {
 	## Tries to authenticate in the following order:
     ## - Supplied username and password
     if (all(credentials$username != "" && credentials$password != "")) {
@@ -122,7 +122,9 @@ synapseLogin <- function(username = "", password = "", sessionToken = "", apiKey
     }
     
     ## Print out a greeting
-    .doWelcome()
+    if (!silent) {
+        .doWelcome()
+    }
 }
 
 .getSessionToken <- function(credentials) {
